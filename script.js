@@ -1,19 +1,21 @@
 function threeSum(arr, target) {
 // write your code here
-  let ans=Number.MAX_VALUE;
+  let curr=Number.MAX_VALUE,ans=0;
   arr.sort();
-  for(let i=0;i<arr.length;i++){
+  for(let i=0;i<arr.length-2;i++){
 	  let l=i+1,r=arr.length-1;
 	  while(l<r){
 		  let sum=arr[i]+arr[l]+ar[r];
-		  if(Math.abs(sum-target)<ans) {
+		  if(Math.abs(sum-target)<curr) {
+		   curr=Math.abs(sum-target);
 	       ans=sum;
-		   l++;
-		   r--;
-		  }else if(sum<target) l++;
+		  }
+		   
+		   if(sum<target) l++;
 		  else r--;
 	  }
   }
+  return ans;
 }
 
 module.exports = threeSum;
